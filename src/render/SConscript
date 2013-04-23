@@ -1,0 +1,24 @@
+srcfiles = ['renderer.cpp',
+            'vertexBuffer.cpp',
+            'indexBuffer.cpp',
+            'hardwareBufferMgr.cpp',
+            'renderDevice.cpp',
+            'surface.cpp',
+             ]
+
+
+subdirs = ['materialSystem',
+           'meshSystem',
+           ]
+
+
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+for dir in subdirs:
+    objs += env.SConscript(dir + '/SConscript')
+    
+Return('objs')
+

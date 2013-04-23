@@ -1,0 +1,17 @@
+srcfiles = ['materialSystem.cpp',
+            'renderState.cpp',
+            'shaderProgram.cpp',
+            'textureMgr.cpp',
+            'textureState.cpp',
+            'tga.cpp',
+            'dds.cpp',
+            'material.cpp',
+           ]
+
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+Return('objs')
+

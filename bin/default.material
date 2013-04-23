@@ -1,0 +1,67 @@
+<material console_text>
+{
+  depthtest = always;
+  srcblend = src_alpha;
+  dstblend = one_minus_src_alpha;
+  blendfunc = add;
+  depthwrite = disable;
+  depthtest = always;
+  cull = none;
+
+  [texmap text.tga]
+}
+
+
+<material logo>
+{
+  srcblend = src_alpha;
+  dstblend = one_minus_src_alpha;
+  blendfunc = add;
+  depthtest = always;
+  depthwrite = disable;
+  cull = none;
+
+  [texmap logo.tga]
+}
+
+
+
+<material console_bg>
+{
+  srcblend = src_alpha;
+  dstblend = one_minus_src_alpha;
+  blendfunc = add;
+  depthtest = always;
+  depthwrite = disable;
+  cull = none;
+
+  [texmap console_bg.tga]
+}
+
+
+<material axis>
+{
+  cull = back;
+
+  [texmap metal.tga]
+  [texmap blort.tga]
+}
+
+<material lightmap>
+{
+  cull = none;
+  shader = "light.shader";  
+}
+
+<material blend>
+{
+  cull = none;
+  shader = "blend.shader";
+}
+
+<material copy>
+{
+  cull = none;
+  shader = "copy.shader";
+}
+

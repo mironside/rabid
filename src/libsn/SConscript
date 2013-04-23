@@ -1,0 +1,12 @@
+srcfiles = [
+  'hashMap.cpp',
+]
+
+
+# MODIFICATION BELOW THIS LINE PUNISHIBLE BY SITTING IN THE SHIT CHAIR!
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+Return('objs')
+

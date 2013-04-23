@@ -1,0 +1,24 @@
+srcfiles = ['rabid.cpp',
+            'windowedApp.cpp',
+            'app.cpp',
+            'linuxWindowedApp.cpp'
+            ]
+
+subdirs = ['render',
+           'common',
+           'math',
+           'libsn',
+           'OL',
+           ]
+
+
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+for dir in subdirs:
+    objs += env.SConscript(dir + '/SConscript')
+    
+Return('objs')
+

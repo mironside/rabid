@@ -1,0 +1,32 @@
+# Build Parameters
+binname = 'GL'
+objdir = '#../../../obj/' + binname
+bindir = '../../../bin/'
+libs = ['GL', 'GLU']
+libpath = ['#../../../lib', '/usr/X11R6/lib']
+cxxflags = '-DLOGGING -pedantic -g -Wall'
+cppflags = ['#../../', '#.']
+bintarget = bindir + binname
+
+print 'Building %s to %s' % (binname, bintarget)
+print 'Using Object Directory %s' % objdir
+print 'CXXFLAGS: %s' % cxxflags
+print 'LIBPATH: %s' % libpath
+print 'LIBS: %s' % libs
+print 'BINDIR: %s' % bindir
+
+
+env = Environment(CXXFLAGS = cxxflags,
+                  CPPPATH  = cppflags,
+                  BINDIR   = bindir)
+
+Export('env')
+env.BuildDir(objdir, '#.', duplicate=0)
+srcfiles = env.SConscript(objdir+'/SConscript')
+
+default = env.SharedLibrary(target  = bintarget,
+                            source  = srcfiles,
+                            LIBS    = libs,
+                            LIBPATH = libpath)
+
+Default(default)

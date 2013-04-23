@@ -1,0 +1,37 @@
+srcfiles = ['GLRenderDevice.cpp',
+            'GLRenderDevice_texture.cpp',
+            'GLVertexBuffer.cpp',
+            'GLIndexBuffer.cpp',
+            'GLHardwareBufferMgr.cpp',
+            '#../../common/log.cpp',
+            '#../hardwareBufferMgr.cpp',
+            '#../vertexBuffer.cpp',
+            '#../indexBuffer.cpp',
+            '#../materialSystem/shaderProgram.cpp',
+            '#../materialSystem/renderState.cpp',
+            '#../renderDevice.cpp',
+            'GLTexture.cpp',
+            'GLShaderProgram.cpp',
+            'GLRenderState.cpp',
+            'GLTextureState.cpp',
+           ]
+
+
+Import('env')
+pform = env.get('platform', Platform())
+os = '%s' % pform
+
+print 'OS Specific Sconscript'
+if(os == 'win32'):
+	print os
+	srcfiles.append('win32GLRenderDevice.cpp')
+else:
+	print os
+	srcfiles.append('linuxGLRenderDevice.cpp')
+
+
+objs = []
+if len(srcfiles) > 0:
+    objs += env.SharedObject(srcfiles)
+
+Return('objs')

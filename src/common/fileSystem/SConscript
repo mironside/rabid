@@ -1,0 +1,11 @@
+srcfiles = ['fileSystem.cpp',
+            'pathFileSystem.cpp',
+            'baseFileSystem.cpp',
+            ]
+
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+Return('objs')

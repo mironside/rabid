@@ -1,0 +1,20 @@
+import os
+Import('env')
+
+srcfiles = ['ast.c',
+            'check.c',
+            'ol_lex.c',
+            'ol_yacc.c',
+            'error.c'
+            ]
+
+print 'Making Flex and Bison'
+
+env.CFile('ol_lex.c', 'ol.l', LEXFLAGS='-Pol_')
+env.CFile('ol_yacc.c', 'ol.y', YACCFLAGS='-d -pol_')
+
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+Return('objs')

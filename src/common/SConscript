@@ -1,0 +1,29 @@
+srcfiles = [
+  'console.cpp',
+  'leakTracer.cpp',
+  'log.cpp',
+  'profile.cpp',
+  'cbuf.cpp',
+  'commandSystem.cpp',
+  'cvarSystem.cpp',
+  'common.cpp',
+  'timer.cpp',
+  'keys.cpp',
+  'defMgr.cpp',
+  'def.cpp',
+]
+
+subdirs = ['fileSystem',
+           ]
+
+
+Import('env')
+objs = []
+if len(srcfiles) > 0:
+    objs += env.Object(srcfiles)
+
+for dir in subdirs:
+    objs += env.SConscript(dir + '/SConscript')
+    
+Return('objs')
+
